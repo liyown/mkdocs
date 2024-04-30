@@ -5,6 +5,7 @@ nav:
   - 主页:
       index.md
   - 后端:
+      - backend/index.md
       - 基础知识:
           - maven: backend/maven/Maven.md
           - tomcat:
@@ -16,12 +17,24 @@ nav:
               - 会话_过滤器_监听器: backend/tomcat/06_第六章 会话_过滤器_监听器.md
               - 前端工程化: backend/tomcat/07_第七章 前端工程化.md
               - 微头条项目开发: backend/tomcat/08_第八章 微头条项目开发.md
+          - ssm:
+              - spring: backend/ssm/spring.md
+              - mybatis: backend/ssm/MyBatis.md
+              - mybatis实践: backend/ssm/MyBatis实践.md
+              - springmvc实战: backend/ssm/SpringMVC实战.md
+              - SSM整合: backend/ssm/SSM整合.md
+              - SpringBoot3实战: backend/ssm/SpringBoot3实战.md
+              - mybatis-plus: backend/ssm/MyBatis-Plus.md
+
   - 博客:
       - blog/index.md
 
 plugins:
   - search
-  - blog
+  - blog:
+      pagination_per_page: 5
+      pagination_format: "~2~"
+      blog_toc: true
   - tags
 
 theme:
@@ -33,6 +46,8 @@ theme:
     - navigation.prune
     - navigation.top
     - search.suggest
+    - navigation.indexes
+    - navigation.footer
     - search.highlight
     - search.share
     - content.tabs.link
@@ -70,3 +85,52 @@ extra:
       link: https://github.com/liyown
     - icon: material/email
       link: mailto:liuyaowen_smile@outlook.com
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
