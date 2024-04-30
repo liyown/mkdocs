@@ -1,0 +1,35 @@
+name:  pakage to docker
+on:
+# 检测到gh-pages分支改变时触发
+  push:
+    branches:
+      - gh-pages
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Build the Docker image
+        run: docker build --file dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/myblog:latest .
+      - name: Docker image push
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/myblog:latest
+      - name: 更新服务器
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }} # 服务器ip地址 ; 需要去仓库的 settings/secrets/actions 去创建
+          username: ${{ secrets.SERVER_USER }} # 服务器用户名称；需要去仓库的 settings/secrets/actions 去创建
+          password: ${{ secrets.SERVER_PWD }} # 服务器密码；需要去仓库的 settings/secrets/actions 去创建
+          port: ${{ secrets.SERVER_PORT }} # 服务器端口，默认22；需要去仓库的 settings/secrets/actions 去创建
+          script: | # 重启更新镜像
+            if docker ps -a | grep -q 'myblog'; then
+              docker stop myblog
+              docker rm myblog 
+            fi
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }} 
+            docker pull liuyaowen0925/myblog:latest 
+            docker run -dp 8089:80  --restart=always --name myblog liuyaowen0925/myblog:latest
