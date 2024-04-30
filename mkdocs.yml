@@ -1,0 +1,72 @@
+site_name: 知识仓库
+site_url: https://mydomain.org/mysite
+
+nav:
+  - 主页:
+      index.md
+  - 后端:
+      - 基础知识:
+          - maven: backend/maven/Maven.md
+          - tomcat:
+              - 概述: backend/tomcat/01_第一章 概述.md
+              - HTML&CSS: backend/tomcat/02_第二章 HTML&CSS.md
+              - JavaScript: backend/tomcat/03_第三章 JavaScript.md
+              - XML_Tomcat_HTTP: backend/tomcat/04_第四章 XML_Tomcat_HTTP.md
+              - Servlet: backend/tomcat/05_第五章 Servlet.md
+              - 会话_过滤器_监听器: backend/tomcat/06_第六章 会话_过滤器_监听器.md
+              - 前端工程化: backend/tomcat/07_第七章 前端工程化.md
+              - 微头条项目开发: backend/tomcat/08_第八章 微头条项目开发.md
+  - 博客:
+      - blog/index.md
+
+plugins:
+  - search
+  - blog
+  - tags
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.prune
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - navigation.instant
+  language: zh
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+extra:
+  social:
+    - icon: fontawesome/brands/qq
+      link: https://qm.qq.com/q/yD83ftGgg0
+    - icon: material/github
+      link: https://github.com/liyown
+    - icon: material/email
+      link: mailto:liuyaowen_smile@outlook.com
