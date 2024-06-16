@@ -3,7 +3,7 @@ title: 批量获取bibtex(一步到位）
 date: 2024-04-16
 authors: [刘耀文]
 categories:
-  - 小工具
+  - 源码阅读
 
 ---
 
