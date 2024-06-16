@@ -2,10 +2,6 @@
 title: 批量获取bibtex(一步到位）
 date: 2024-04-16
 authors: [刘耀文]
-slug: adding-a-badge-to-your-project
-description: >
-  Share the love – you can now add a badge to your README, showing that your
-  project is built with Material for MkDocs
 categories:
   - 小工具
 ---
