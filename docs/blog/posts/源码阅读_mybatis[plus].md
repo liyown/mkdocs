@@ -1,5 +1,5 @@
 ---
-title: 批量获取bibtex(一步到位）
+title: Mybatis[plus] 源码阅读笔记
 date: 2024-04-16
 authors: [刘耀文]
 categories:

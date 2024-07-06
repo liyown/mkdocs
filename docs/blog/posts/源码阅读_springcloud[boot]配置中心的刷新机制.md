@@ -1,6 +1,6 @@
 ---
-title: 批量获取bibtex(一步到位）
-date: 2024-04-16
+title: springcloud[boot]配置中心的自动刷新机制
+date: 2024-7-7
 authors: [刘耀文]
 categories:
   - 源码阅读
@@ -9,12 +9,13 @@ categories:
 
 # springcloud[boot]配置中心的自动刷新机制
 
-<!-- more -->
+
 ## 实现机制：
 
 ### bean属性的自动刷新原理：
 
 在spring2的时候，新增了自定义作用域，也就是除了单例和原型，新增了scope注解和接口，以便提高bean的储存生命周期，与它相关的接口和类为
+<!-- more -->
 ```java
 ConfigurableBeanFactory.registerScope, 
 CustomScopeConfigurer, 
