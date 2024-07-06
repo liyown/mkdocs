@@ -1,6 +1,6 @@
 ---
 title: springcloud[boot]配置中心的自动刷新机制
-date: 2024-7-7
+date: 2024-07-07
 authors: [刘耀文]
 categories:
   - 源码阅读
