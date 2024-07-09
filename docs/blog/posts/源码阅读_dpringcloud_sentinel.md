@@ -13,6 +13,8 @@ categories:
 
 初始化为sentinel在springboot启动时候，做了什么？
 在引入依赖后，对spring boot产生了什么副作用
+
+<!-- more --> 
 ```xml
 <dependency>
     <groupId>com.alibaba.cloud</groupId>
