@@ -198,3 +198,51 @@ docker-compose -f docker-compose.yaml up
 │   ├── README.md
 │   ├── README-zh.md
 ```
+
+## 简单使用
+### 引入id
+```xml
+当然，discovery,springcloud,springcloudAlibaba,都要提前准备
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+</dependency>
+```
+
+### 配置
+```xml
+seata:
+    registry:
+        type: nacos
+        nacos:
+            application: seata-server
+            server-addr: 192.168.208.128:8848
+            group: SEATA_GROUP
+            namespace: 9194952e-02a9-4737-89c2-1f3dee3317f0
+            username:
+            password:
+    tx-service-group: hmall
+    service: 
+        vgroup-mapping:
+        <!-- 对应事务组的集群位置 -->
+            hmall: "default"
+
+```
+
+### AT 模式
+
+```sql
+-- 注意此处0.7.0+ 增加字段 context
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `context` varchar(128) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
