@@ -19,6 +19,7 @@ services:
   # nacos 环境：单机
   # 1、需要准备数据库表 见下面 >nacos数据库表 
   # 2、准备启动环境 见下面 >nacos-standlone-mysql.env
+  # 3、官网教程：https://nacos.io/docs/next/manual/admin/deployment/deployment-standalone/
   nacos:
     image: nacos/nacos-server:latest
     container_name: nacosnacos-standlone-mysql.env
@@ -62,6 +63,7 @@ services:
   # 1、将resource拷贝出来 docker cp 容器名字:/seata-server/resources 自己linux服务第地址例如/home/liu/seata/resources
   # 2、配置好里面的application，模板：https://github.com/apache/incubator-seata/blob/develop/server/src/main/resources/application.example.yml
   # 3、将配置好的nacos中添加seata配置 例子见：下面的 >seataServer.properties
+  # 4、官网教程：https://seata.apache.org/zh-cn/docs/ops/deploy-by-docker-compose
   seata-server:
     image: seataio/seata-server:1.5.2
     container_name: seata
@@ -87,7 +89,8 @@ services:
     networks:
       - cloud-net
 
-  # 1、 启动后配置延时队列插件 docker exec -it rabbitmq rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+  # 1、启动后配置延时队列插件 docker exec -it rabbitmq rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+  # 2、官网教程：https://hub.docker.com/_/rabbitmq/
   rabbitmq:
     image: rabbitmq:3.8-management
     container_name: rabbitmq
@@ -103,7 +106,7 @@ services:
     volumes:
       - mq_plugins:/plugins
 
-  
+  # 官网教程： https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
   kibana:
     image: docker.elastic.co/kibana/kibana:7.12.1
     container_name: kibana
