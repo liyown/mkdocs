@@ -11,7 +11,7 @@ categories:
 ### 准备数据库表
 数据库表: https://github.com/apache/incubator-seata/tree/develop/script/server/db
 #### 准备compose.yaml文件
-
+<!-- more -->
 ```yaml
 version: "3.1"
 services:
